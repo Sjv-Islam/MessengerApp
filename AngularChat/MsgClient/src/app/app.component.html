@@ -1,0 +1,25 @@
+
+<label for="msg">Message:</label>
+<input [(ngModel)]="message" id="msg" />
+<br />
+
+
+<input type="file" [disabled]="disconnected" (change)="fileSelect($event)" />
+<br />
+<button (click)="SendMsg()" class="btn btn-outline-success" [disabled]="disconnected">Send</button>
+<br />
+<hr />
+
+<ul>
+    <li *ngFor="let message of Messages">
+
+        <span *ngIf="!message.IsImg">
+            <b>{{message.UserName}} : </b><i>{{message.Message}}</i>
+        </span>
+
+        <span *ngIf="message.IsImg">
+            <b>{{message.UserName}} :</b><img [src]="message.Message" width="240px" />
+        </span>
+
+    </li>
+</ul>
